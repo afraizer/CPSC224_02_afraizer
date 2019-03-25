@@ -50,7 +50,6 @@ public class Parallax extends JFrame {
 	public void paint(Graphics g) {
 		
 		super.paint(g);
-		setBackground(Color.CYAN);
 		//hills
 		g.setColor(new Color(69, 155, 18));
 		g.fillOval(hill1X, hill1Y, 330, 130);
@@ -108,23 +107,75 @@ public class Parallax extends JFrame {
 
 			int moveFactor1 = 3;
 			int moveFactor2 = 2;
-			int moveFactor3 = 1;			
+			int moveFactor3 = 1;	
 
-			hill1X += moveFactor2;
-			hill1Y += moveFactor2;
-			hill2X += moveFactor2;
-			hill2Y += moveFactor2;
+			if(e.getX() < 150 && e.getY() < 150) {
+				hill1X -= moveFactor2;
+				hill1Y -= moveFactor2;
+				hill2X -= moveFactor2;
+				hill2Y -= moveFactor2;
 
-			grassX += moveFactor1;
-			grassY += moveFactor1;
+				grassX -= moveFactor1;
+				grassY -= moveFactor1;
 
-			trunkX += moveFactor1;
-			trunkY += moveFactor1;
-			treeX += moveFactor1;
-			treeY += moveFactor1;
+				trunkX -= moveFactor1;
+				trunkY -= moveFactor1;
+				treeX -= moveFactor1;
+				treeY -= moveFactor1;
 
-			sunX += moveFactor3;
-			sunY += moveFactor3;
+				sunX -= moveFactor3;
+				sunY -= moveFactor3;
+			} else if(e.getX() < 150 && e.getY() > 150) {
+				hill1X -= moveFactor2;
+				hill1Y += moveFactor2;
+				hill2X -= moveFactor2;
+				hill2Y += moveFactor2;
+
+				grassX -= moveFactor1;
+				grassY += moveFactor1;
+
+				trunkX -= moveFactor1;
+				trunkY += moveFactor1;
+				treeX -= moveFactor1;
+				treeY += moveFactor1;
+
+				sunX -= moveFactor3;
+				sunY += moveFactor3;
+			} else if(e.getX() > 150 && e.getY() < 150) {
+				hill1X += moveFactor2;
+				hill1Y -= moveFactor2;
+				hill2X += moveFactor2;
+				hill2Y -= moveFactor2;
+
+				grassX += moveFactor1;
+				grassY -= moveFactor1;
+
+				trunkX += moveFactor1;
+				trunkY -= moveFactor1;
+				treeX += moveFactor1;
+				treeY -= moveFactor1;
+
+				sunX += moveFactor3;
+				sunY -= moveFactor3;
+			} else {
+				hill1X += moveFactor2;
+				hill1Y += moveFactor2;
+				hill2X += moveFactor2;
+				hill2Y += moveFactor2;
+
+				grassX += moveFactor1;
+				grassY += moveFactor1;
+
+				trunkX += moveFactor1;
+				trunkY += moveFactor1;
+				treeX += moveFactor1;
+				treeY += moveFactor1;
+
+				sunX += moveFactor3;
+				sunY += moveFactor3;
+			}
+
+			
 
 
 //			removeAll();
