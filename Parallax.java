@@ -93,7 +93,25 @@ public class Parallax extends JFrame {
 
 		}
 		public void mouseMoved(MouseEvent e) {
-			
+			int moveFactor1 = (int) e.getX() * .4;
+			int moveFactor2 = (int) e.getX() * .2;
+			int moveFactor3 = (int) e.getX() * .05;
+
+			hill1X += moveFactor2;
+			hill1Y += moveFactor2;
+			hill2X += moveFactor2;
+			hill2Y += moveFactor2;
+
+			grassX += moveFactor1;
+			grassY += moveFactor1;
+
+			trunkX += moveFactor1;
+			trunkY += moveFactor1;
+			treeX += moveFactor1;
+			treeY += moveFactor1;
+
+			sunX += moveFactor3;
+			sunY += moveFactor3;
 		}
 	}
 
