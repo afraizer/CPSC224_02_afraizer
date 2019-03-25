@@ -93,9 +93,13 @@ public class Parallax extends JFrame {
 
 		}
 		public void mouseMoved(MouseEvent e) {
-			int moveFactor1 = (int) e.getX() * .4;
-			int moveFactor2 = (int) e.getX() * .2;
-			int moveFactor3 = (int) e.getX() * .05;
+			double moveFactor1 = (int) e.getX() * .4;
+			double moveFactor2 = (int) e.getX() * .2;
+			double moveFactor3 = (int) e.getX() * .05;
+
+			//double moveFactor1Y = (int) e.getY() * .4;
+			//double moveFactor2Y = (int) e.getY() * .2;
+			//double moveFactor3Y = (int) e.getY() * .05;
 
 			hill1X += moveFactor2;
 			hill1Y += moveFactor2;
@@ -112,6 +116,8 @@ public class Parallax extends JFrame {
 
 			sunX += moveFactor3;
 			sunY += moveFactor3;
+
+			repaint();
 		}
 	}
 
