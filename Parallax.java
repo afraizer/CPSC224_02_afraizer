@@ -26,7 +26,7 @@ public class Parallax extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		setResizable(false);
-		//setBackground(Color.CYAN);
+		setBackground(Color.CYAN);
 		addMouseListener(new MyMouseListener());
 		addMouseMotionListener(new MyMotionListener());
 
@@ -98,13 +98,17 @@ public class Parallax extends JFrame {
 		}
 		public void mouseMoved(MouseEvent e) {
 			
-			double moveFactor1 = (int) e.getX() * .1;
-			double moveFactor2 = (int) e.getX() * .05;
-			double moveFactor3 = (int) e.getX() * .02;
+			//double moveFactor1 = (int) e.getX() + 3;
+			//double moveFactor2 = (int) e.getX() + 2;
+			//double moveFactor3 = (int) e.getX() + 1;
 
 			//double moveFactor1Y = (int) e.getY() * .4;
 			//double moveFactor2Y = (int) e.getY() * .2;
 			//double moveFactor3Y = (int) e.getY() * .05;
+
+			int moveFactor1 = 3;
+			int moveFactor2 = 2;
+			int moveFactor3 = 1;			
 
 			hill1X += moveFactor2;
 			hill1Y += moveFactor2;
