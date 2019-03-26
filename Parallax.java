@@ -2,6 +2,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 import javax.swing.event.*;
+import java.util.Random;
 
 public class Parallax extends JFrame {
 	private int hill1X;
@@ -28,6 +29,8 @@ public class Parallax extends JFrame {
 	private int lineY1;
 	private int lineY2;
 	private int lineY3;
+
+	private Color treeColor;
 
 	private boolean isMouseInFrame;
 
@@ -67,6 +70,8 @@ public class Parallax extends JFrame {
 		lineY3 = 90;
 
 		isMouseInFrame = false;
+
+		treeColor = new Color(66, 124, 32);
 	}
 
 	public void paint(Graphics g) {
@@ -87,7 +92,7 @@ public class Parallax extends JFrame {
 		//tree
 		g.setColor(new Color(79, 72, 45));
 		g.fillRect(trunkX, trunkY,20,40);
-		g.setColor(new Color(66, 124, 32));
+		g.setColor(treeColor);
 		g.fillOval(treeX, treeY,40,60);
 		//sun
 		if(isMouseInFrame) {
@@ -107,7 +112,12 @@ public class Parallax extends JFrame {
 
 		}
 		public void mouseClicked(MouseEvent e) {
-			
+			Random rand = new Random();
+			int r = rand.nextInt(256);
+			int g = rand.nextInt(256);
+			int b = rand.nextInt(256);
+			treeColor = new Color(r, g, b);
+			repaint();
 		}
 		public void mouseReleased(MouseEvent e) {
 			
