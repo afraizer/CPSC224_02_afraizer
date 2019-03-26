@@ -82,6 +82,8 @@ public class Parallax extends JFrame {
 	public void paint(Graphics g) {
 		
 		super.paint(g);
+
+		setBackground(Color.CYAN);
 		//hills
 		g.setColor(new Color(69, 155, 18));
 		g.fillOval(hill1X, hill1Y, 330, 130);
@@ -93,7 +95,7 @@ public class Parallax extends JFrame {
 		g.drawOval(hill2X, hill2Y,330,400);
 		//grass
 		g.setColor(Color.GREEN);
-		g.fillRect(grassX, grassY,300,60);
+		g.fillRect(grassX, grassY,350,100);
 		//tree
 		g.setColor(new Color(79, 72, 45));
 		g.fillRect(trunkX, trunkY,20,40);
@@ -148,7 +150,7 @@ public class Parallax extends JFrame {
 			int moveFactor3 = 1;	
 
 
-			if(e.getX() < 150 && e.getY() < 150 && grassX > -10 && grassY > 230)  {
+			if(e.getX() < 150 && e.getY() < 150 && grassX > -15 && grassY > 225)  {
 				hill1X -= moveFactor2;
 				hill1Y -= moveFactor2;
 				hill2X -= moveFactor2;
@@ -172,7 +174,7 @@ public class Parallax extends JFrame {
 				lineY1 -= moveFactor3;
 				lineY2 -= moveFactor3;
 				lineY3 -= moveFactor3;
-			} else if(e.getX() < 150 && e.getY() > 150 && grassX > -10 && grassY < 250) {
+			} else if(e.getX() < 150 && e.getY() > 150 && grassX > -15 && grassY < 255) {
 				hill1X -= moveFactor2;
 				hill1Y += moveFactor2;
 				hill2X -= moveFactor2;
@@ -196,7 +198,7 @@ public class Parallax extends JFrame {
 				lineY1 += moveFactor3;
 				lineY2 += moveFactor3;
 				lineY3 += moveFactor3;
-			} else if(e.getX() > 150 && e.getY() < 150 && grassX < 10 && grassY > 230) {
+			} else if(e.getX() > 150 && e.getY() < 150 && grassX < 15 && grassY > 225) {
 				hill1X += moveFactor2;
 				hill1Y -= moveFactor2;
 				hill2X += moveFactor2;
@@ -221,7 +223,7 @@ public class Parallax extends JFrame {
 				lineY2 -= moveFactor3;
 				lineY3 -= moveFactor3;
 			} else {
-				if(grassX < 10 && grassY < 250) {
+				if(grassX < 15 && grassY < 255) {
 					hill1X += moveFactor2;
 					hill1Y += moveFactor2;
 					hill2X += moveFactor2;
