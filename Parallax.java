@@ -174,12 +174,6 @@ public class Parallax extends JFrame {
 				sunX += moveFactor3;
 				sunY += moveFactor3;
 			}
-
-			
-
-
-//			removeAll();
-//			revalidate();
 			repaint();
 			
 		}
