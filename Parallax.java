@@ -2,6 +2,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 import javax.swing.event.*;
+import java.util.Random;
 
 public class Parallax extends JFrame {
 	private int hill1X;
@@ -19,6 +20,24 @@ public class Parallax extends JFrame {
 
 	private int sunX;
 	private int sunY;
+
+	private int lineX1;
+	private int lineX2;
+	private int lineX3;
+	private int lineX4;
+	private int lineX5;
+	private int lineY1;
+	private int lineY2;
+	private int lineY3;
+
+	private Color treeColor;
+
+	private boolean isMouseInFrame;
+
+	private int borderQuad1;
+	private int borderQuad2;
+	private int borderQuad3;
+	private int borderQuad4;
 
 	Parallax() {
 		setTitle("Motion Parallax");
@@ -45,6 +64,19 @@ public class Parallax extends JFrame {
 
 		sunX = 240;
 		sunY = 0;
+
+		lineX1 = 210;
+		lineX2 = 220;
+		lineX3 = 270;
+		lineX4 = 320;
+		lineX5 = 330;
+		lineY1 = -30;
+		lineY2 = 30;
+		lineY3 = 90;
+
+		isMouseInFrame = false;
+
+		treeColor = new Color(66, 124, 32);
 	}
 
 	public void paint(Graphics g) {
@@ -65,9 +97,17 @@ public class Parallax extends JFrame {
 		//tree
 		g.setColor(new Color(79, 72, 45));
 		g.fillRect(trunkX, trunkY,20,40);
-		g.setColor(new Color(66, 124, 32));
+		g.setColor(treeColor);
 		g.fillOval(treeX, treeY,40,60);
 		//sun
+		if(isMouseInFrame) {
+			g.setColor(Color.YELLOW);
+
+			g.drawLine(lineX2, lineY1, lineX4, lineY3);
+			g.drawLine(lineX4, lineY1, lineX2, lineY3);
+			g.drawLine(lineX3, lineY1, lineX3, lineY3);
+			g.drawLine(lineX1, lineY2, lineX5, lineY2);
+		}
 		g.setColor(Color.YELLOW);
 		g.fillOval(sunX, sunY,60,60);
 	}
@@ -77,16 +117,22 @@ public class Parallax extends JFrame {
 
 		}
 		public void mouseClicked(MouseEvent e) {
-			
+			Random rand = new Random();
+			int r = rand.nextInt(256);
+			int g = rand.nextInt(256);
+			int b = rand.nextInt(256);
+			treeColor = new Color(r, g, b);
+			repaint();
 		}
 		public void mouseReleased(MouseEvent e) {
 			
 		}
 		public void mouseEntered(MouseEvent e) {
-			
+			isMouseInFrame = true;
 		}
 		public void mouseExited(MouseEvent e) {
-			
+			isMouseInFrame = false;
+			repaint();
 		}
 	}
 
@@ -97,19 +143,12 @@ public class Parallax extends JFrame {
 		}
 		public void mouseMoved(MouseEvent e) {
 			
-			//double moveFactor1 = (int) e.getX() + 3;
-			//double moveFactor2 = (int) e.getX() + 2;
-			//double moveFactor3 = (int) e.getX() + 1;
-
-			//double moveFactor1Y = (int) e.getY() * .4;
-			//double moveFactor2Y = (int) e.getY() * .2;
-			//double moveFactor3Y = (int) e.getY() * .05;
-
 			int moveFactor1 = 3;
 			int moveFactor2 = 2;
 			int moveFactor3 = 1;	
 
-			if(e.getX() < 150 && e.getY() < 150) {
+
+			if(e.getX() < 150 && e.getY() < 150 && grassX > -10 && grassY > 230)  {
 				hill1X -= moveFactor2;
 				hill1Y -= moveFactor2;
 				hill2X -= moveFactor2;
@@ -125,7 +164,15 @@ public class Parallax extends JFrame {
 
 				sunX -= moveFactor3;
 				sunY -= moveFactor3;
-			} else if(e.getX() < 150 && e.getY() > 150) {
+				lineX1 -= moveFactor3;
+				lineX2 -= moveFactor3;
+				lineX3 -= moveFactor3;
+				lineX4 -= moveFactor3;
+				lineX5 -= moveFactor3;
+				lineY1 -= moveFactor3;
+				lineY2 -= moveFactor3;
+				lineY3 -= moveFactor3;
+			} else if(e.getX() < 150 && e.getY() > 150 && grassX > -10 && grassY < 250) {
 				hill1X -= moveFactor2;
 				hill1Y += moveFactor2;
 				hill2X -= moveFactor2;
@@ -141,7 +188,15 @@ public class Parallax extends JFrame {
 
 				sunX -= moveFactor3;
 				sunY += moveFactor3;
-			} else if(e.getX() > 150 && e.getY() < 150) {
+				lineX1 -= moveFactor3;
+				lineX2 -= moveFactor3;
+				lineX3 -= moveFactor3;
+				lineX4 -= moveFactor3;
+				lineX5 -= moveFactor3;
+				lineY1 += moveFactor3;
+				lineY2 += moveFactor3;
+				lineY3 += moveFactor3;
+			} else if(e.getX() > 150 && e.getY() < 150 && grassX < 10 && grassY > 230) {
 				hill1X += moveFactor2;
 				hill1Y -= moveFactor2;
 				hill2X += moveFactor2;
@@ -157,6 +212,14 @@ public class Parallax extends JFrame {
 
 				sunX += moveFactor3;
 				sunY -= moveFactor3;
+				lineX1 += moveFactor3;
+				lineX2 += moveFactor3;
+				lineX3 += moveFactor3;
+				lineX4 += moveFactor3;
+				lineX5 += moveFactor3;
+				lineY1 -= moveFactor3;
+				lineY2 -= moveFactor3;
+				lineY3 -= moveFactor3;
 			} else {
 				hill1X += moveFactor2;
 				hill1Y += moveFactor2;
@@ -173,6 +236,14 @@ public class Parallax extends JFrame {
 
 				sunX += moveFactor3;
 				sunY += moveFactor3;
+				lineX1 += moveFactor3;
+				lineX2 += moveFactor3;
+				lineX3 += moveFactor3;
+				lineX4 += moveFactor3;
+				lineX5 += moveFactor3;
+				lineY1 += moveFactor3;
+				lineY2 += moveFactor3;
+				lineY3 += moveFactor3;
 			}
 			repaint();
 			
